@@ -17,7 +17,7 @@ function App() {
       {toggle && <div data-testid='toggle-elem'>toggle</div>}
       <h2>hello world</h2>
       <button data-testid='toggle-btn' onClick={onToggle}>
-        click on me
+        click on me to toggle
       </button>
       <input type='text' placeholder='type in me...' />
       {data && <div style={{ color: 'red' }}>data</div>}
