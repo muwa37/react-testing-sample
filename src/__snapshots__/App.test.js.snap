@@ -4,5 +4,6 @@ exports[`test app sample 1`] = `
 <input
   placeholder="type in me..."
   type="text"
+  value=""
 />
 `;
