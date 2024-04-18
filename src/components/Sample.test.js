@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import Sample from './Sample';
 
-describe('test app', () => {
+describe('test sample component', () => {
   test('sample', () => {
-    render(<App />);
+    render(<Sample />);
 
     const helloWorldEl = screen.getByText(/hello world/i);
     const btnEl = screen.getByRole('button');
@@ -16,14 +16,14 @@ describe('test app', () => {
   });
 
   test('sample async and styles', async () => {
-    render(<App />);
+    render(<Sample />);
     const asyncDataEl = await screen.findByText(/data/i);
     expect(asyncDataEl).toBeInTheDocument();
     expect(asyncDataEl).toHaveStyle({ color: 'red' });
   });
 
   test('sample testid with event', () => {
-    render(<App />);
+    render(<Sample />);
     const btnByTestId = screen.getByTestId('toggle-btn');
     expect(screen.queryByTestId('toggle-elem')).toBeNull();
     fireEvent.click(btnByTestId);
@@ -33,7 +33,7 @@ describe('test app', () => {
   });
 
   test('sample input event', () => {
-    render(<App />);
+    render(<Sample />);
     const inputEl = screen.getByPlaceholderText(/type in me.../i);
     expect(screen.queryByTestId('value-elem')).toContainHTML('');
     userEvent.type(inputEl, 'test');
