@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import About from './pages/About';
+import Main from './pages/Main';
 
 function App() {
   const [data, setData] = useState(null);
@@ -28,6 +31,19 @@ function App() {
         onChange={e => setValue(e.target.value)}
       />
       {data && <div style={{ color: 'red' }}>data</div>}
+
+      <BrowserRouter>
+        <Link to='/' data-testid='main-link'>
+          main
+        </Link>
+        <Link to='/about' data-testid='about-link'>
+          about
+        </Link>
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/about' element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
