@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`test app sample 1`] = `
-<input
-  placeholder="type in me..."
-  type="text"
-  value=""
-/>
-`;
