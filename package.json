@@ -20,7 +20,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "wdio": "wdio run wdio.conf.js",
     "test:e2e": "npx wdio run ./wdio.conf.js",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
