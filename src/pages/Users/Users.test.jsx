@@ -45,10 +45,11 @@ describe('sample component with async loading', () => {
     expect(axios.get).toHaveBeenCalledTimes(1);
   });
 
-  test('redirect to single user page', async () => {
+  test('test redirect to details page', async () => {
     axios.get.mockReturnValue(response);
-    render(renderWithRouter(<Users />));
+    render(renderWithRouter(undefined, '/users'));
     const users = await screen.findAllByTestId('user-item');
+    expect(users.length).toBe(3);
     userEvent.click(users[0]);
     expect(screen.getByTestId('user-page')).toBeInTheDocument();
   });

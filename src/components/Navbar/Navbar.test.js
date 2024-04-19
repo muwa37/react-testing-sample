@@ -1,27 +1,29 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Navbar from '.';
-import { renderWithRouter } from '../../tests/helpers/renderWithRouter';
+import { MemoryRouter } from 'react-router-dom';
+import App from './App';
 
-describe('navbar test', () => {
-  test('about link', () => {
-    render(renderWithRouter(<Navbar />));
+describe('routing', () => {
+  test('should route to pages', () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    const mainLink = screen.getByTestId('main-link');
     const aboutLink = screen.getByTestId('about-link');
     userEvent.click(aboutLink);
-    expect(screen.getByTestId('about-page')).toBeInTheDocument;
-  });
-
-  test('main link', () => {
-    render(renderWithRouter(<Navbar />));
-    const mainLink = screen.getByTestId('main-link');
+    expect(screen.getByTestId('about-page')).toBeInTheDocument();
     userEvent.click(mainLink);
     expect(screen.getByTestId('main-page')).toBeInTheDocument();
   });
 
-  test('users link', () => {
-    render(renderWithRouter(<Navbar />));
-    const usersLink = screen.getByTestId('users-link');
-    userEvent.click(usersLink);
-    expect(screen.getByTestId('users-page')).toBeInTheDocument();
+  test('should redirect to error ', () => {
+    render(
+      <MemoryRouter initialEntries={['/asfasfafasf']}>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
   });
 });
